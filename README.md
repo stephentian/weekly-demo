@@ -1,4 +1,7 @@
-# JS-stack
+# Daily-Algorithm
+
+每日算法，关于 JS 算法的学习
+
 数据结构 栈的实现
 栈常用的实例：
  进制转换
