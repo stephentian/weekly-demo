@@ -1,6 +1,6 @@
-# Daily-Algorithm
+# Daily-CSS
 
-每日算法，关于 JS 算法的学习
+每日CSS，关于 CSS 的学习
 
 ## 目录
  1. 数据结构 栈的实现
