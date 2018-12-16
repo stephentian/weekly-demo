@@ -39,7 +39,8 @@ window.onload = function () {
     }
   }
 
-  fdIcon.onmouseup = function (e) {
+  // 将 onmouseup 绑定在 fdIcon 会出现鼠标在时元素外弹起鼠标按键时 drag 还被绑定的 问题
+  document.onmouseup = function (e) {
     console.log('onmouseup')
     if (drag) {
       drag.style.cursor = ''
