@@ -19,16 +19,22 @@ window.onload = function () {
 
   function down(e) {
     isDrag = true
-    e = e || window.event
-    drag = e.target
+    if (event.touches) {
+      e = event.touches[0]
+    } else {
+      e = e || window.event
+    }
+    // 目标元素
+    drag = event.target
 
     // client 鼠标位置到当前屏幕中左上角距离（不包含滚动）
+    // 移动端是 event.touches[0].clienX
     // offset 偏移量，目标元素左上角距离 page 顶部和 左边的距离
 
-    dX = e.clientX - e.target.offsetLeft
-    dY = e.clientY - e.target.offsetTop
+    dX = e.clientX - event.target.offsetLeft
+    dY = e.clientY - event.target.offsetTop
 
-    // console.log(e.clientX)
+    // console.log(event)
     // console.log(e.clientY)
     // console.log(e.target.offsetLeft)
     // console.log(e.target.offsetTop)
@@ -36,7 +42,11 @@ window.onload = function () {
 
   function move(e) {
     if (isDrag) {
-      e = e || window.event
+      if (event.touches) {
+        e = event.touches[0]
+      } else {
+        e = e || window.event
+      }
       var left = e.clientX - dX;
       var top = e.clientY - dY;
       if (left < 0) left = 0;
@@ -47,6 +57,11 @@ window.onload = function () {
     }
   }
 
+  function endDrag(e) {
+    isDrag = false
+    drag = null
+  }
+
   // icon
   fdIcon.addEventListener('mousedown', function (e) {
     console.log('mousedown!')
@@ -55,24 +70,36 @@ window.onload = function () {
 
   // fdIcon.onmousemove 会发生在鼠标按住时，鼠标可能会脱离 icon 范围
   document.onmousemove = function (e) {
-    // console.log(drag)
     move()
   }
 
   // 将 onmouseup 绑定在 fdIcon 会出现鼠标在时元素外弹起鼠标按键时 drag 还被绑定的 问题
   document.onmouseup = function (e) {
-    console.log('onmouseup')
-    if (drag) {
-      drag.style.cursor = ''
-    }
-    drag = null
-    isDrag = false
+    endDrag()
+  }
+  // 兼容移动端
+  fdIcon.ontouchstart = function (e) {
+    down()
+  }
+  fdIcon.ontouchmove = function (e) {
+    move()
+  }
+  fdIcon.ontouchend = function (e) {
+    endDrag()
   }
 
   // link
+  // 兼容移动端
   fdLink.onmousedown = function (e) {
     down()
   }
-  // document.onmouseup = function () {
-  // }
+  fdLink.ontouchstart = function (e) {
+    down()
+  }
+  fdLink.ontouchmove = function (e) {
+    move()
+  }
+  fdLink.ontouchend = function (e) {
+    endDrag()
+  }
 }
