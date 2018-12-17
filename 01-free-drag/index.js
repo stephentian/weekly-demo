@@ -11,22 +11,35 @@ window.onload = function () {
   // 推荐使用 querySelector
 
   var fdLink = document.querySelector('.free-drag-link')
-  var drag,
+  // 是否被拖拽
+  var isDrag = false,
+    drag,
     dX,
     dY;
+
+  function down(e) {
+    isDrag = true
+    e = e || window.event
+    drag = e.target
+
+    dX = e.clientX - e.target.offsetLeft
+    dY = e.clientY - e.target.offsetTop
+
+    console.log(e.clientX)
+    console.log(e.clientY)
+    console.log(e.target.offsetLeft)
+    console.log(e.target.offsetTop)
+  }
 
   // icon
   fdIcon.addEventListener('mousedown', function (e) {
     console.log('mousedown!')
-    e = e || window.event
-    drag = e.target
-    dX = e.clientX - e.target.offsetLeft
-    dY = e.clientY - e.target.offsetTop
-    console.log(drag)
+    down()
   }, false)
 
-  fdIcon.onmousemove = function (e) {
-    console.log(drag)
+  // fdIcon.onmousemove 会发生在鼠标按住时，鼠标可能会脱离 icon 范围
+  document.onmousemove = function (e) {
+    // console.log(drag)
     if (drag) {
       e = e || window.event
       var left = e.clientX - dX;
@@ -49,17 +62,9 @@ window.onload = function () {
   }
 
   // link
-  // fdLink.onmousedown = function (e) {
-  //   e = e || event
-  //   var dX = e.clientX - e.target.offsetLeft
-  //   var dY = e.clientX - e.target.offsetTop
-  //   console.log(dX)
-  //   document.onmousemove = function () {
-  //     e.target.style.left = e.clientX - dX + 'px'
-  //     e.target.style.top = e.clientY - dY + 'px'
-  //   }
-  // }
+  fdLink.onmousedown = function (e) {
+    down()
+  }
   // document.onmouseup = function () {
-
   // }
 }
