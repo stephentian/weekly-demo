@@ -8,20 +8,20 @@ window.onload = function () {
   // 自动加载
   var autoBar = document.querySelector('.autoload .bar')
   var autoValue = document.querySelector('.autoload .bar-value')
-  var value = 0;
-  console.log(autoBar)
-  console.log(autoValue)
+  var autoloadValue = 0;
   var autoload = function () {
-    value++
-    console.log(value)
-    if (value > 100) {
-      window.clearInterval(myVal)
+    autoloadValue++
+    // console.log(autoloadValue)
+    if (autoloadValue > 100) {
+      window.clearInterval(autoVal)
       return
     }
-    autoBar.style.width = value + '%'
+    autoBar.style.width = autoloadValue + '%'
     autoValue.innerHTML = autoBar.style.width
   }
-  var myVal = setInterval(function () {
+  var autoVal = setInterval(function () {
     autoload()
   }, 45)
+
+  // 
 }
