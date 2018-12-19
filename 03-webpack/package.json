@@ -1,0 +1,15 @@
+{
+  "name": "learn-webpack",
+  "version": "1.0.0",
+  "description": "a project to show How to learn webpack",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "author": "stephen tian",
+  "license": "ISC",
+  "dependencies": {
+    "css-loader": "^2.0.1",
+    "style-loader": "^0.23.1"
+  }
+}
