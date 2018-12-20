@@ -48,10 +48,11 @@
       box-sizing: border-box;
       background-color: #f5f5f5;
       box-shadow: inset 0 3px 2px rgba(0, 0, 0, 0.3);
+      position: relative;
     }
 
     .bar {
-      float: left;
+      /* float: left; */
       width: 10%;
       height: 100%;
       font-size: 12px;
@@ -73,10 +74,43 @@
       color: #ff0000;
     }
 
+    /* 自动加载 */
     .autoload .bar {
       width: 0;
     }
 
+    /* 手动拖拽 */
+    .drag .bar-wrapper {
+      position: relative;
+    }
+
+    .drag .bar {
+      width: 0%;
+    }
+
+    .drag .drag-bar {
+      position: absolute;
+      top: -4px;
+      left: -5px;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      background: rgba(255, 113, 73, 1);
+      text-align: center;
+      line-height: 16px;
+      box-shadow: 0 0 2px #000;
+      /* 动画对于滑动效果影响很大!!! */
+      /* transform: scale(1.4); */
+      /* transition: all 0.1s ease-in-out; */
+      cursor: pointer;
+    }
+
+    .drag .drag-bar:hover {
+      cursor: pointer;
+      /* transform: scale(1.6) */
+    }
+
+    /* H5 progress 标签 */
     #h5Progress {
       display: inline-block;
       width: 80%;
@@ -110,11 +144,14 @@
         <div class="bar-value">0%</div>
       </div>
     </div>
-    <div class="content normal">
-      <h2>普通进度条</h2>
+    <div class="content drag">
+      <h2>自由拖动进度条</h2>
       <div class="bar-box">
         <div class="bar-wrapper">
           <div class="bar"></div>
+          <div class="drag-bar">
+            <!-- <span class="drag-btn"></span> -->
+          </div>
         </div>
         <div class="bar-value">10%</div>
       </div>
@@ -131,7 +168,7 @@
     <div class="content">
       <h2>HTML5 progress标签</h2>
       <div class="bar-box">
-        <progress max="100" value="10" id="h5Progress"></progress>
+        <progress max="100" value="90" id="h5Progress"></progress>
         <div class="bar-value">10%</div>
       </div>
     </div>
