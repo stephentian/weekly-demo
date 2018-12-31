@@ -23,5 +23,5 @@ type golang interface{}
 
 // 由 main 函数作为程序入口点启动
 func main() {
-	fmt.Println("Hello world, Go!你好")
+	fmt.Println("Hello world, Go!")
 }
