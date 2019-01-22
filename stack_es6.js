@@ -1,5 +1,11 @@
 'use strict';
 
+/**
+ * author: stephentian
+ * email: stephentian@foxmail.com
+ * day: 2019-1-21
+ **/
+
 class Stack {
   constructor() {
     this.dataStore = [];
@@ -11,16 +17,16 @@ class Stack {
   pop(element) {
     return this.dataStore[--this.top];
   }
-  peek(){
-    return this.dataStore[this.top-1];
+  peek() {
+    return this.dataStore[this.top - 1];
   }
-  length(){
+  length() {
     return this.top;
   }
-  clear(){
+  clear() {
     this.top = 0;
   }
-  toString(){
+  toString() {
     return this.dataStore.join('');
   }
 }

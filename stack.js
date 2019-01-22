@@ -1,10 +1,10 @@
 'use strict';
 
 /*
-******author:StephenTian
-******2016.8.19;
-******栈的实现;
-*/
+ ** author:StephenTian
+ ** 2016.8.19;
+ ** 栈的实现;
+ */
 
 function Stack() {
   this.dataStore = [];
@@ -12,7 +12,7 @@ function Stack() {
 }
 
 // 压入栈方法
-Stack.prototype.push = function(element){
+Stack.prototype.push = function (element) {
   // this.dataStore.push(element);
   // this.top ++;
   this.dataStore[this.top++] = element;
@@ -23,32 +23,32 @@ Stack.prototype.push = function(element){
 // top-1
 // 将栈顶元素返回给调用者
 // --this.top先减，再输出
-Stack.prototype.pop = function(){
+Stack.prototype.pop = function () {
   if (this.top == 0) {
     return undefined;
   }
   var lastItem = this.dataStore.pop();
-  this.top --;
+  this.top--;
   return lastItem;
   // return this.dataStore[--this.top];
 };
 
 // 查看栈顶方法
-Stack.prototype.peek = function(){
-  return this.dataStore[this.top-1];
+Stack.prototype.peek = function () {
+  return this.dataStore[this.top - 1];
 };
 
 // 返回栈内元素数量
-Stack.prototype.length = function(){
+Stack.prototype.length = function () {
   return this.top;
 };
 
 // 清空栈
-Stack.prototype.clear = function(){
+Stack.prototype.clear = function () {
   return this.top = 0;
 };
 
-Stack.prototype.toString = function(){
+Stack.prototype.toString = function () {
   if (this.top == 0) {
     return "已经被掏空了";
   }
