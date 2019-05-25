@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>下拉加载</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+    }
+
+    li {
+      list-style: none;
+    }
+
+    a,
+    a:hover {
+      text-decoration: none;
+    }
+
+    .list-item {
+      height: 50px;
+      line-height: 50px;
+      font-size: 18px;
+      margin: 10px 0;
+      padding-left: 10px;
+      border: 1px solid #000;
+    }
+
+    .container {
+      padding: 20px 10px 0;
+    }
+
+    .main {
+      margin-top: 40px;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="container">
+      <header>
+        <h1>下滑加载</h1>
+      </header>
+      <div class="main">
+        <div class="list">
+          <ul>
+            <li class="list-item">1</li>
+            <li class="list-item">2</li>
+            <li class="list-item">3</li>
+            <li class="list-item">4</li>
+            <li class="list-item">5</li>
+            <li class="list-item">6</li>
+            <li class="list-item">7</li>
+            <li class="list-item">8</li>
+            <li class="list-item">9</li>
+            <li class="list-item">10</li>
+            <li class="list-item">11</li>
+            <li class="list-item">12</li>
+            <li class="list-item">13</li>
+            <li class="list-item">14</li>
+            <li class="list-item">15</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    // 首先得知道触发什么(滚动条), 
+    // 触发条件(下拉滚动条到底部), 滚动条距离顶部距离 = 滚动条总高度 - 可视区高度
+    // window.onscroll
+    // 滚动条距离顶部距离, document.documentElement.scrollTop || document.body.scrollTop
+    // 可视区页面高度, document.documentElement.clientHeight || document.body.clientHeight
+    // 滚动条总高度 document.body.scrollHeit || document.documentElement.scrollHeight
+
+    // window.onload = function () {
+
+    // }
+    const pHeight = document.documentElement.scrollHeight
+    const vHeight = document.documentElement.clientHeight
+
+    window.onscroll = function () {
+      if (document.documentElement.scrollTop == pHeight - vHeight) {
+
+        console.log('到底了')
+      }
+    }
+
+  </script>
+</body>
+
+</html>
