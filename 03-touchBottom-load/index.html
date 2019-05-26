@@ -55,7 +55,7 @@
       </header>
       <div class="main">
         <div class="list">
-          <ul>
+          <ul class="list-ul">
             <li class="list-item">1</li>
             <li class="list-item">2</li>
             <li class="list-item">3</li>
@@ -84,16 +84,36 @@
     // 可视区页面高度, document.documentElement.clientHeight || document.body.clientHeight
     // 滚动条总高度 document.body.scrollHeit || document.documentElement.scrollHeight
 
+    // 情况一：
+    // 获取列表替换之前的内容, 则
+    // document.ducumentElement.scrollTop == pHeight - vHeight
+
+    // 情况二：
+    // 在原有的列表添加子元素, 则
+    // 
+
     // window.onload = function () {
 
     // }
     const pHeight = document.documentElement.scrollHeight
     const vHeight = document.documentElement.clientHeight
+    const listUl = document.getElementsByClassName('list-ul')
+    let i = 15
+    let end = false
 
     window.onscroll = function () {
-      if (document.documentElement.scrollTop == pHeight - vHeight) {
-
+      if (document.documentElement.scrollTop >= pHeight - vHeight) {
         console.log('到底了')
+        if (i === 150) {
+          return false
+        }
+        i++
+        const tagLi = document.createElement("li")
+        tagLi.className = 'list-item'
+        const nodes = document.createTextNode(i)
+        tagLi.appendChild(nodes)
+        listUl[0].appendChild(tagLi)
+
       }
     }
 
