@@ -27,13 +27,15 @@
       text-decoration: none;
     }
 
-    .list-item {
-      height: 50px;
-      line-height: 50px;
+    .list-ul li {
+      height: 100px;
+      line-height: 100px;
       font-size: 18px;
       margin: 10px 0;
       padding-left: 10px;
-      border: 1px solid #000;
+      color: #ffffff;
+      border-radius: 5px;
+      background-color: rgb(85, 84, 84);
     }
 
     .container {
@@ -66,84 +68,39 @@
             <li class="list-item">8</li>
             <li class="list-item">9</li>
             <li class="list-item">10</li>
-            <li class="list-item">11</li>
-            <li class="list-item">12</li>
-            <li class="list-item">13</li>
-            <li class="list-item">14</li>
-            <li class="list-item">15</li>
           </ul>
         </div>
       </div>
     </div>
   </div>
   <script>
-    // 首先得知道触发什么(滚动条), 
-    // 触发条件(下拉滚动条到底部), 滚动条距离顶部距离 = 滚动条总高度 - 可视区高度
-    // window.onscroll
-    // 滚动条距离顶部距离, document.documentElement.scrollTop || document.body.scrollTop
-    // 可视区页面高度, document.documentElement.clientHeight || document.body.clientHeight
-    // 滚动条总高度 document.body.scrollHeit || document.documentElement.scrollHeight
-
-    // 情况一：
-    // 获取列表替换之前的内容, 则
-    // 滚动条距离顶部距离 = 滚动条总高度 - 可视区高度
-    // document.ducumentElement.scrollTop == pHeight - vHeight
-
-    // 情况二：
-    // 在原有的列表添加子元素(添加列表), 则
-    // 滚动条距离顶部距离(会变) = 滚动条总高度(会变) - 可视区高度
-
-    // window.onload = function () {
-
-    // }
-    const pHeight = document.documentElement.scrollHeight
     const vHeight = document.documentElement.clientHeight
     const listUl = document.getElementsByClassName('list-ul')
-    let i = 15
+    let i = 10
     let isLoading = false
     let timeId
 
-    window.onscroll = function () {
-      // 情况一：
-      // 更新内容替换原有内容
-      // if (document.documentElement.scrollTop == pHeight - vHeight) {
-      //   console.log('到底了')
-      //   if (i === 150) {
-      //     return false
-      //   }
-      //   i++
-      //   const tagLi = document.createElement("li")
-      //   tagLi.className = 'list-item'
-      //   const nodes = document.createTextNode(i)
-      //   tagLi.appendChild(nodes)
-      //   listUl[0].appendChild(tagLi)
-      // }
-
-      // 情况二：
-      // 加载更多项
-      if (document.documentElement.scrollTop >= document.documentElement.scrollHeight - vHeight) {
-        console.log('到底了')
+    function load(params) {
+      const pHeight = document.documentElement.scrollHeight
+      const sTop = document.documentElement.scrollTop
+      if (sTop >= pHeight - vHeight) {
         if (isLoading) {
           clearTimeout(timeId)
           return
         }
-        if (i === 100) {
+        if (i === 50) {
           return false
         }
         isLoading = true
         timeId = setTimeout(() => {
           i++
-          const tagLi = document.createElement("li")
-          tagLi.className = 'list-item'
-          const nodes = document.createTextNode(i)
-          tagLi.appendChild(nodes)
-          listUl[0].appendChild(tagLi)
+          const str = `<li class="list-item">${i}</li><li class="list-item">${i}</li><li class="list-item">${i}</li><li class="list-item">${i}</li><li class="list-item">${i}</li><li class="list-item">${i}</li><li class="list-item">${i}</li><li class="list-item">${i}</li><li class="list-item">${i}</li><li class="list-item">${i}</li>`
+          listUl[0].innerHTML += str
           isLoading = false
-        }, 3000)
-
+        }, 1000)
       }
     }
-
+    window.onscroll = load
   </script>
 </body>
 
