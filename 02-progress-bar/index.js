@@ -20,7 +20,7 @@ window.onload = function () {
     autoValue.innerHTML = autoBar.style.width
   }
   var autoVal = setInterval(function () {
-    // autoload()
+    autoload()
   }, 45)
 
   // 手动拖拽
@@ -68,11 +68,11 @@ window.onload = function () {
       console.log()
       console.log(left)
     }
-    console.log('拖动了')
+    // console.log('拖动了')
   }
 
   function endDrag(e) {
-    console.log('鼠标抬起')
+    // console.log('鼠标抬起')
     isDrag = false
     drag = null
   }
